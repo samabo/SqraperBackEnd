@@ -15,14 +15,12 @@ public class SqraperService {
 
 	@Autowired
 	private StudentRepository studentRepository;
-	@Autowired
-	private VacatureRepository vacatureRepository;
 
 	public Student saveStudent(Student student) { // voor put and post
 		return studentRepository.save(student);
 	}
 
-	public Student findStudentById(Long id) { // voor get
+	public Student findStudentById(Long id) { // voor get by ID
 		Optional<Student> student = studentRepository.findById(id);
 		if (student.isPresent()) {
 			return student.get();
@@ -31,7 +29,7 @@ public class SqraperService {
 		}
 	}
 
-	public Iterable<Student> findAllStudents() {
+	public Iterable<Student> findAllStudents() { // voor get all
 		return studentRepository.findAll();
 	}
 
@@ -40,9 +38,13 @@ public class SqraperService {
 			studentRepository.deleteById(id);
 		}
 	}
-// ==========================================================================		
-
-	public Vacature saveVacature(Vacature vacature) { // voor put and post
+// ==========================================================================	
+//	VACATURE GEDEELTE
+	
+	@Autowired
+	private VacatureRepository vacatureRepository;
+	
+	public Vacature save(Vacature vacature) { // voor put and post
 		return vacatureRepository.save(vacature);
 	}
 
