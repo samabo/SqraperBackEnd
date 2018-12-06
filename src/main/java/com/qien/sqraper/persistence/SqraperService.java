@@ -48,7 +48,7 @@ public class SqraperService {
 		return vacatureRepository.save(vacature);
 	}
 
-	public Vacature findById(Long id) { // voor get
+	public Vacature findVacatureById(Long id) { // voor get
 		Optional<Vacature> vacature = vacatureRepository.findById(id);
 		if (vacature.isPresent()) {
 			return vacature.get();
@@ -57,7 +57,7 @@ public class SqraperService {
 		}
 	}
 
-	public Iterable<Vacature> findAll() {
+	public Iterable<Vacature> findAllVacatures() {
 		return vacatureRepository.findAll();
 	}
 

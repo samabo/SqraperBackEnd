@@ -16,7 +16,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.qien.sqraper.domain.Student;
-import com.qien.sqraper.domain.Vacature;
 import com.qien.sqraper.persistence.SqraperService;
 
 @Component
@@ -161,62 +160,6 @@ public class SqraperEndpoint {
 		return Response.accepted().build();
 	}
 
-	// get put post delete voor vacatures
-//	@GET
-//	public Response listGroupVacature() {
-//		Iterable<Vacature> iterable = sqraperService.findAll();
-//		return (Response.ok(iterable).build());
-//	}
-//	
-//	@GET
-//	@Path("{id}")
-//	public Response findVacature(@PathParam("id") long id) {
-//		Vacature vacature = sqraperService.findById(id);		// findById
-//		if (vacature == null) {
-//			return Response.accepted(Status.GONE).build();
-//		}
-//		return (Response.ok(vacature).build());
-//	}
-//	@PUT
-//	@Path("{id}")
-//	public Response updateVacature(@PathParam("id") Long id, Vacature vacature) {
-//		Vacature result = sqraperService.findById(id);
-//		if (result == null) {
-//			return Response.status(Status.NOT_FOUND).build();
-//		}
-//		System.out.println("FOUND");
-//		if (vacature.getId()!=result.getId()) {
-//			return Response.status(Status.BAD_REQUEST).build();
-//		}
-//		boolean changed = false;
-//		
-//		if (!vacature.getTitel().equals(result.getTitel())) {
-//			changed = true;
-//		}
-//		if (changed) {
-//			sqraperService.save(vacature);
-//			return Response.ok(vacature).build();
-//		} else {
-//			return Response.notModified().build();
-//
-//		}
-//	}
-//	@POST
-//	@Produces(MediaType.APPLICATION_JSON)
-//	public Response postVacature(Vacature vacature) {
-//		Vacature result = sqraperService.save(vacature);
-//		return (Response.accepted(result.getId()).build());
-//	}
-//	
-//	@DELETE
-//	@Path("{id}")
-//	public Response deleteVacature(@PathParam("id") Long id) {
-//		Vacature result = sqraperService.findById(id);
-//		if (result == null) {
-//			return Response.status(Status.NOT_FOUND).build();
-//		}
-//		sqraperService.deleteById(id);
-//		return Response.accepted().build();
-//	}
+	
 
 }

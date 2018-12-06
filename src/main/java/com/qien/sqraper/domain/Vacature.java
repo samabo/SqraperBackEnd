@@ -1,11 +1,14 @@
 package com.qien.sqraper.domain;
 
 import java.time.LocalDate;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+
 
 @Entity
 public class Vacature {
@@ -20,6 +23,12 @@ public class Vacature {
 	private String plaats;
 	private String [] keywords;
 	private String [] gelinkteVacatures;
+	
+	@ManyToMany
+	private Set<Student> studenten;
+	
+	
+	
 	
 	
 	public long getId() {
@@ -63,6 +72,9 @@ public class Vacature {
 		this.gelinkteVacatures = gelinkteVacatures;
 	}
 	
+	public Set<Student> getStudenten() {
+		return studenten;
+	}
 	
 	
 }
