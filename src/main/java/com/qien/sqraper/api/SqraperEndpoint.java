@@ -47,7 +47,7 @@ public class SqraperEndpoint {
 		return (Response.ok(student).build());
 	}
 
-	@PUT
+	@PUT 
 	@Path("{id}")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
