@@ -21,8 +21,8 @@ import com.qien.sqraper.persistence.SqraperService;
 @Component
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
-@Path("sqraper")
-public class SqraperEndpoint {
+@Path("student")
+public class StudentEndpoint {
 
 	@Autowired
 	private SqraperService sqraperService;

@@ -21,16 +21,31 @@ public class Vacature {
 	private String titel;
 	private String omschrijving;
 	private String plaats;
-	private String [] keywords;
-	private String [] gelinkteVacatures;
+	private String[] keywords;
+	private String vacatureLink;
 	
 	@ManyToMany
 	private Set<Student> studenten;
 	
 	
 	
+	public Set<Student> getStudenten() {
+		return studenten;
+	}
 	
-	
+
+	public void setStudenten(Set<Student> studenten) {
+		this.studenten = studenten;
+	}
+
+	public String getVacatureLink() {
+		return vacatureLink;
+	}
+
+	public void setVacatureLink(String vacatureLink) {
+		this.vacatureLink = vacatureLink;
+	}
+
 	public long getId() {
 		return id;
 	}
@@ -65,16 +80,8 @@ public class Vacature {
 	public void setKeywords(String[] keywords) {
 		this.keywords = keywords;
 	}
-	public String[] getGelinkteVacatures() {
-		return gelinkteVacatures;
-	}
-	public void setGelinkteVacatures(String[] gelinkteVacatures) {
-		this.gelinkteVacatures = gelinkteVacatures;
-	}
 	
-	public Set<Student> getStudenten() {
-		return studenten;
-	}
+	
 	
 	
 }
