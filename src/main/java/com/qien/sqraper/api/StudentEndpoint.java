@@ -81,7 +81,7 @@ public class StudentEndpoint {
 		}
 
 		if (!student.getAchternaam().equals("")) {
-			if (!student.getVoornaam().equals(result.getVoornaam())) {
+			if (!student.getAchternaam().equals(result.getVoornaam())) {
 				changed = true;
 
 			} else {
