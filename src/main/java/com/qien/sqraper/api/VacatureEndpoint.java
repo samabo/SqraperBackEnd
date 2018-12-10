@@ -1,5 +1,9 @@
 package com.qien.sqraper.api;
 
+import java.io.IOException;
+import java.util.ArrayList;
+
+
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -12,11 +16,16 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.qien.sqraper.domain.Vacature;
 import com.qien.sqraper.persistence.SqraperService;
+import com.qien.sqraper.persistence.VacatureRepository;
 
 @Component
 @Produces(MediaType.APPLICATION_JSON)
@@ -133,4 +142,77 @@ public class VacatureEndpoint {
 		return Response.accepted().build();
 	}
 
+	
+	// ==========================================================================	
+		//	SCRAPER GEDEELTE	
+		
+		VacatureRepository vacatureRepository;
+		
+		@Path ("scr")
+		public Iterable<Vacature> findAll() {
+			System.out.println("in service");
+			Document doc;
+			ArrayList<Vacature> vacatures = new ArrayList<>();
+			
+			try {
+				doc = Jsoup
+						.connect(
+								"https://www.monsterboard.nl/vacatures/zoeken/?q=java&cy=nl&rad=20&intcid=swoop_HeroSearch")
+						.get();
+				Elements elements = doc.select("#SearchResults");
+				if (elements.size()!=1) {
+					return vacatures;
+				}
+				
+				
+				
+//				for (Element result : ((Element) doc).select("summary.company a")){
+					
+//					String test = result.absUrl("href");
+//					System.out.println(test);
+					
+		        	for (Element result2 : ((Element) doc).select("h2.title a")){
+
+		            final String titel = result2.text();
+		            final String url = result2.absUrl("href");
+		            final String plaats = result2.attr("name");
+
+		            
+		            System.out.println(plaats + "\n" + titel + "\n" + url + "\n");
+		        }
+				
+			////////////////////////////	
+//				Elements children = elements.get(0).children();
+//				for (Element element : children) {
+//					System.out.println(element.html());
+//					
+//					Elements url = element.select("a[href]");		// geeft nog steeds niet de link alleen
+//					String link = url.toString();
+//					
+//					element = element.getElementsContainingOwnText("java").first(); 
+//					
+					Vacature vacature = new Vacature();
+//					vacature.setTitel(title);
+//					vacature.setPlaats(element.location);
+//					vacature.setBedrijf(element.company);
+			////////////////////////////	
+					vacatures.add(vacature);
+			
+				System.out.println("in service na vacatures.add(vacature)");
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			return vacatures;
+		}
+
+		public void deleteById(Long id) { // voor delete
+			if (vacatureRepository.findById(id).isPresent()) {
+				vacatureRepository.deleteById(id);
+			}
+
+		}
+	
+	
+	
+	
 }

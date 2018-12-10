@@ -82,7 +82,9 @@ public class StudentEndpoint {
 //		}
 
 		if (!student.getAchternaam().equals("")) {
+
 			if (!student.getAchternaam().equals(result.getAchternaam())) {
+
 				changed = true;
 
 			} else {
