@@ -13,7 +13,7 @@ public class Student {
 	private long id;
 	
 	private String voornaam;
-	private String voorvoegsel;
+//	private String voorvoegsel;
 	private String achternaam;
 	private String straatnaam;
 	private int huisnummer;
@@ -65,12 +65,12 @@ public class Student {
 	public void setVoornaam(String voornaam) {
 		this.voornaam = voornaam;
 	}
-	public String getVoorvoegsel() {
-		return voorvoegsel;
-	}
-	public void setVoorvoegsel(String voorvoegsel) {
-		this.voorvoegsel = voorvoegsel;
-	}
+//	public String getVoorvoegsel() {
+//		return voorvoegsel;
+//	}
+//	public void setVoorvoegsel(String voorvoegsel) {
+//		this.voorvoegsel = voorvoegsel;
+//	}
 	public String getAchternaam() {
 		return achternaam;
 	}

@@ -58,6 +58,7 @@ public class StudentEndpoint {
 		System.out.println("FOUND");
 
 		if (student.getId() != result.getId()) {
+			System.out.println("hier gaat het fout");
 			return Response.status(Status.BAD_REQUEST).build();
 		}
 		boolean changed = false;
@@ -71,17 +72,19 @@ public class StudentEndpoint {
 			}
 		}
 
-		if (!student.getVoorvoegsel().equals("")) {
-			if (!student.getVoorvoegsel().equals(result.getVoorvoegsel())) {
-				changed = true;
-
-			} else {
-				student.setVoorvoegsel(result.getVoorvoegsel());
-			}
-		}
+//		if (!student.getVoorvoegsel().equals(null)) {
+//			if (!student.getVoorvoegsel().equals(result.getVoorvoegsel())) {
+//				changed = true;
+//
+//			} else {
+//				student.setVoorvoegsel(result.getVoorvoegsel());
+//			}
+//		}
 
 		if (!student.getAchternaam().equals("")) {
-			if (!student.getAchternaam().equals(result.getVoornaam())) {
+
+			if (!student.getAchternaam().equals(result.getAchternaam())) {
+
 				changed = true;
 
 			} else {
@@ -145,7 +148,7 @@ public class StudentEndpoint {
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response postStudent(Student student) {
 		Student result = sqraperService.saveStudent(student);
-		return (Response.accepted(result.getId()).build());
+		return (Response.accepted(result).build());
 	}
 
 	@DELETE
